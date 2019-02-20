@@ -28,7 +28,17 @@ int main(void) {
 		struct car temp;
 		for (int j = 1; j < NumOfString; j++) {
 			if (information[j].year < information[j - 1].year) {
+				temp.make = information[j].make;
+				temp.model = information[j].model;
+				temp.year = information[j].model;
 
+				information[j].make = information[j - 1].make;
+				information[j].model = information[j - 1].model;
+				information[j].year = information[j - 1].year;
+
+				information[j - 1].make = temp.make;
+				information[j - 1].model = temp.model;
+				information[j - 1].year = temp.year;
 			}
 		}
 	}
