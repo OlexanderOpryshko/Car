@@ -1,2 +1,8 @@
 ﻿  Car.c
+c:\programs\c\car\car\car.c(3): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+  c:\programs\c\car\car\car.c: note: see previous definition of '_CRT_SECURE_NO_WARNINGS'
+c:\programs\c\car\car\car.c(31): warning C4013: 'malloc' undefined; assuming extern returning int
+c:\programs\c\car\car\car.c(68): warning C4477: 'printf' : format string '%10s' requires an argument of type 'char *', but variadic argument 3 has type 'int'
+c:\programs\c\car\car\car.c(73): warning C4477: 'printf' : format string '%10s' requires an argument of type 'char *', but variadic argument 3 has type 'int'
+c:\programs\c\car\car\car.c(77): warning C4013: 'free' undefined; assuming extern returning int
   Car.vcxproj -> C:\Programs\C\Car\Debug\Car.exe
