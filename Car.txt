@@ -1,8 +1,8 @@
-Shkoda Rapit 2014
-Toyota Supra 1978
-BMW M3 1986
-AC Cobra 1961
-Audi A8 1994
-Lamborgini Huracan 2013
-Ford Mustang 1964
-Lexus RX 1998
+Shkoda Rapit 2014 390 238
+Toyota Supra 1978 600 110
+BMW M3 1986 550 777
+AC Cobra 1961 390 775
+Audi A8 1994 208 142
+Lamborgini Huracan 2013 520 111
+Ford Mustang 1964 460 109
+Lexus RX 1998 300 132
