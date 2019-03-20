@@ -12,8 +12,7 @@ typedef struct car {
 } car;
 
 void swap(car* cars, int i, int j);
-void tableOutputSettings(car* cars, int numOfString);
-
+int tableOutputSettings(car* cars, int numOfString);
 
 int main(void) {
 
@@ -39,11 +38,8 @@ int main(void) {
 	for (int i = 0; i < numOfString; i++) {
 		fscanf(carFile, "%s%s%d%d%d", cars[i].make, cars[i].model, &cars[i].year, &cars[i].power, &cars[i].carNumber);
 	}
-
 	
-
-	tableOutputSettings(cars, numOfString);
-
+	int sort = tableOutputSettings(cars, numOfString);
 	
 	fprintf(orderedData,"|-|%-15s|-|%-15s|-|%-15s|-|%-15s|-|%-15s|-|\n\n", "Mark", "Model", "Year", "Power", "Car num");
 	if (sort == 1) {
@@ -91,7 +87,7 @@ void swap(car* cars, int i, int j)
 	cars[j].carNumber = temp.carNumber;
 }
 
-void tableOutputSettings(car *cars, int numOfString) {
+int tableOutputSettings(car *cars, int numOfString) {
 
 	int criteria;
 
@@ -130,4 +126,6 @@ void tableOutputSettings(car *cars, int numOfString) {
 			}
 		}
 	}
+
+	return sort;
 }
