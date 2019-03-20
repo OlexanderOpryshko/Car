@@ -18,21 +18,23 @@ int main(void) {
 
 	FILE *carFile = fopen("Car.txt", "r");
 	FILE *orderedData = fopen("OrderedDate.txt", "w");
-	car* cars = (car*)malloc(sizeof(car) * 30);
-	int numOfString = 0;
-
+	
 	if (carFile == NULL || orderedData == NULL)
 	{
 		printf("File was not opened!\n");
 		return 1;
 	}
-	
+
+	car* cars = (car*)malloc(sizeof(car) * 30);
+	int numOfString = 0;
 	int c;
+	
 	while (!feof(carFile)) {
 		c = fgetc(carFile);
 		if (c == '\n')
 			numOfString++;
 	}
+
 	fseek(carFile, 0, 0);
 
 	for (int i = 0; i < numOfString; i++) {
