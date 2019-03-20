@@ -16,10 +16,11 @@ void swap(car* cars, int i, int j);
 int main(void) {
 
 	FILE *carFile = fopen("Car.txt", "r");
+	FILE *orderedData = fopen("OrderedDate.txt", "w");
 	car* cars = (car*)malloc(sizeof(car) * 30);
 	int numOfString = 0;
 
-	if (carFile == NULL)
+	if (carFile == NULL || orderedData == NULL)
 	{
 		printf("File was not opened!\n");
 		return 1;
@@ -46,7 +47,7 @@ int main(void) {
 	printf("How are you want print table:\n1) Desk\n2) Asc\nNum: ");
 	scanf("%d", &sort);
 	
-	printf("|-|%-15s|-|%-15s|-|%-15s|-|%-15s|-|%-15s|-|\n\n", "Mark", "Model", "Year", "Power", "Car num");
+	fprintf(orderedData,"|-|%-15s|-|%-15s|-|%-15s|-|%-15s|-|%-15s|-|\n\n", "Mark", "Model", "Year", "Power", "Car num");
 
 	if (criteria == 1) {
 		for (int i = 0; i < numOfString; i++) {
@@ -69,17 +70,18 @@ int main(void) {
 	
 	if (sort == 1) {
 		for (int i = 0; i < numOfString; i++) {
-			printf("|-|%-15s|-|%-15s|-|%-15d|-|%-15d|-|%-15d|-|\n", cars[i].make, cars[i].model, cars[i].year, cars[i].power, cars[i].carNumber);
+			fprintf(orderedData,"|-|%-15s|-|%-15s|-|%-15d|-|%-15d|-|%-15d|-|\n", cars[i].make, cars[i].model, cars[i].year, cars[i].power, cars[i].carNumber);
 		}
 	}
 	else {
 		for (int i = numOfString - 1; i >= 0; i--) {
-			printf("|-|%-15s|-|%-15s|-|%-15d|-|%-15d|-|%-15d|-|\n", cars[i].make, cars[i].model, cars[i].year, cars[i].power, cars[i].carNumber);
+			fprintf(orderedData,"|-|%-15s|-|%-15s|-|%-15d|-|%-15d|-|%-15d|-|\n", cars[i].make, cars[i].model, cars[i].year, cars[i].power, cars[i].carNumber);
 		}
 	}
 
 	free(cars);
 
+	fclose(orderedData);
 	fclose(carFile);
 
 	getchar();
