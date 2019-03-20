@@ -1,4 +1,5 @@
 #include <stdio.h> 
+#include <stdlib.h>
 #include <string.h>
 
 typedef struct car {
@@ -14,11 +15,9 @@ void swap(car* cars, int i, int j);
 
 int main(void) {
 
-	FILE *carFile;
+	FILE *carFile = fopen("Car.txt", "r");
 	car* cars = (car*)malloc(sizeof(car) * 30);
 	int numOfString = 0;
-
-	carFile = fopen("Car.txt", "r");
 
 	if (carFile == NULL)
 	{
@@ -59,7 +58,7 @@ int main(void) {
 		}
 	}
 	if (criteria == 2) {
-		for (int i = 0; i < numOfString; i++) {
+		for (int i = 1; i < numOfString; i++) {
 			for (int j = 1; j < numOfString; j++) {
 				if (cars[j].power < cars[j - 1].power) {
 					swap(cars, j - 1, j);
@@ -74,7 +73,7 @@ int main(void) {
 		}
 	}
 	else {
-		for (int i = numOfString - 1; i > 0; i--) {
+		for (int i = numOfString - 1; i >= 0; i--) {
 			printf("|-|%-15s|-|%-15s|-|%-15d|-|%-15d|-|%-15d|-|\n", cars[i].make, cars[i].model, cars[i].year, cars[i].power, cars[i].carNumber);
 		}
 	}
@@ -95,7 +94,7 @@ void swap(car* cars, int i, int j)
 
 	strcpy(temp.make, cars[i].make);
 	strcpy(temp.model, cars[i].model);
-	temp.power = cars[i].year;
+	temp.power = cars[i].power;
 	temp.year = cars[i].year;
 	temp.carNumber = cars[i].carNumber;
 

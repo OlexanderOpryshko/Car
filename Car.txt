@@ -6,3 +6,5 @@ Audi A8 1994 208 142
 Lamborgini Huracan 2013 520 111
 Ford Mustang 1964 460 109
 Lexus RX 1998 300 132
+Bugati T 2011 300 007
+Lada Sedan 1978 100 898
