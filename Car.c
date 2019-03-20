@@ -1,4 +1,5 @@
 #include <stdio.h> 
+#include <string.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -11,6 +12,7 @@ typedef struct car {
 } car;
 
 void swap(car* cars, int i, int j);
+void tableOutputSettings(car* cars, int numOfString);
 
 
 int main(void) {
@@ -38,36 +40,12 @@ int main(void) {
 		fscanf(carFile, "%s%s%d%d%d", cars[i].make, cars[i].model, &cars[i].year, &cars[i].power, &cars[i].carNumber);
 	}
 
-	int criteria;
-
-	printf("\n1)Year;\n2)Power;\n3)Name;\nEnter by what criteria to sort: ");
-	scanf("%d", &criteria);
 	
-	int sort;
-	printf("How are you want print table:\n1) Desk\n2) Asc\nNum: ");
-	scanf("%d", &sort);
+
+	tableOutputSettings(cars, numOfString);
+
 	
 	fprintf(orderedData,"|-|%-15s|-|%-15s|-|%-15s|-|%-15s|-|%-15s|-|\n\n", "Mark", "Model", "Year", "Power", "Car num");
-
-	if (criteria == 1) {
-		for (int i = 0; i < numOfString; i++) {
-			for (int j = 1; j < numOfString; j++) {
-				if (cars[j].year < cars[j - 1].year) {
-					swap(cars, j - 1, j);
-				}
-			}
-		}
-	}
-	if (criteria == 2) {
-		for (int i = 1; i < numOfString; i++) {
-			for (int j = 1; j < numOfString; j++) {
-				if (cars[j].power < cars[j - 1].power) {
-					swap(cars, j - 1, j);
-				}
-			}
-		}
-	}
-	
 	if (sort == 1) {
 		for (int i = 0; i < numOfString; i++) {
 			fprintf(orderedData,"|-|%-15s|-|%-15s|-|%-15d|-|%-15d|-|%-15d|-|\n", cars[i].make, cars[i].model, cars[i].year, cars[i].power, cars[i].carNumber);
@@ -111,4 +89,45 @@ void swap(car* cars, int i, int j)
 	cars[j].power = temp.power;
 	cars[j].year = temp.year;
 	cars[j].carNumber = temp.carNumber;
+}
+
+void tableOutputSettings(car *cars, int numOfString) {
+
+	int criteria;
+
+	printf("\n1)Year;\n2)Power;\n3)Name;\nEnter by what criteria to sort: ");
+	scanf("%d", &criteria);
+	
+	int sort;
+	printf("How are you want print table:\n1) Desk\n2) Asc\nNum: ");
+	scanf("%d", &sort);
+
+	if (criteria == 1) {
+		for (int i = 0; i < numOfString; i++) {
+			for (int j = 1; j < numOfString; j++) {
+				if (cars[j].year < cars[j - 1].year) {
+					swap(cars, j - 1, j);
+				}
+			}
+		}
+	}
+	else if (criteria == 2) {
+		for (int i = 1; i < numOfString; i++) {
+			for (int j = 1; j < numOfString; j++) {
+				if (cars[j].power < cars[j - 1].power) {
+					swap(cars, j - 1, j);
+				}
+			}
+		}
+	}
+
+	else if (criteria == 3) {
+		for (int i = 1; i < numOfString; i++) {
+			for (int j = 1; j < numOfString; j++) {
+				if (strcmp(cars[j - 1].make, cars[j].make) > 0) {
+					swap(cars, j - 1, j);
+				}
+			}
+		}
+	}
 }
